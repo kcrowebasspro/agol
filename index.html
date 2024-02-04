@@ -13,8 +13,21 @@
 
   <!-- Adding the modules for full screen map app-->
   <script>  
-    require(["esri/config", "esri/Map", "esri/views/MapView",  "esri/widgets/Locate", 
-    "esri/widgets/Search", "esri/widgets/BasemapGallery"], (esriConfig, Map, MapView, Locate, Search, BasemapGallery) => { 
+    require([
+      "esri/config", 
+      "esri/Map", 
+      "esri/views/MapView",  
+
+      // Adding in the modules for graphics and graphics layers
+      "esri/Graphic",  
+      "esri/layers/GraphicsLayer" 
+
+      // Adding locate, search and basemap gallery
+      "esri/widgets/Locate", 
+      "esri/widgets/Search", 
+      "esri/widgets/BasemapGallery",
+
+    ], (esriConfig, Map, MapView, Graphic, GraphicsLayer, Locate, Search, BasemapGallery) => { 
       
       esriConfig.apiKey = "AAPKad326cc7bcc84403ba8d6e5d75e1c216dZOCMYxyqe8Xx6vzlRhWc5FBpZ9YINE2zzacOcvncG8DsWXQT-2XA5QCTvQE3qT4";
 
@@ -30,6 +43,38 @@
         zoom: 16, // Zoom level
         container: "viewDiv" // Div element
       });
+
+      // Adding the contstuctor for the graphics layer
+      const graphicsLayer = new GraphicsLayer();  
+      map.add(graphicsLayer);
+
+      // Adding a point
+      const point = { //Create a point  
+        type: "point",  
+        longitude: -66.5296,    //long lat of the Machuca surf break in Manati, Puerto Rico
+        latitude: 18.4836
+      };
+
+      // Adding a marker for the point
+      const simpleMarkerSymbol = {  
+        type: "simple-marker",  
+        color: [0, 0, 139],  // Color of blues rock
+        outline: {  
+          color: [255, 255, 255], // White  
+          width: 1
+          }  
+        };
+
+      // Combine the point and the marker 
+      const pointGraphic = new Graphic({  
+        geometry: point,  
+        symbol: simpleMarkerSymbol  
+      });
+
+      // Add the point graphic to the map
+      graphicsLayer.add(pointGraphic);
+
+
 
       //Add a locate button
       const locateWidget = new Locate({
