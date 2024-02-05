@@ -18,18 +18,20 @@
       "esri/Map", 
       "esri/views/MapView",  
 
+      //adding in the module for the feature layers
+      "esri/layers/FeatureLayer",
+
       // Adding in the modules for graphics and graphics layers
       "esri/Graphic",  
       "esri/layers/GraphicsLayer", 
 
-      //adding in the module for the feature layers
-      "esri/layers/FeatureLayer",
+
 
       // Adding locate, search and basemap gallery
       "esri/widgets/Locate", 
       "esri/widgets/Search", 
       "esri/widgets/BasemapGallery"
-    ], (esriConfig, Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Locate, Search, BasemapGallery) => { 
+    ], (esriConfig, Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Locate, Search, BasemapGallery) => { 
       
       esriConfig.apiKey = "AAPKad326cc7bcc84403ba8d6e5d75e1c216dZOCMYxyqe8Xx6vzlRhWc5FBpZ9YINE2zzacOcvncG8DsWXQT-2XA5QCTvQE3qT4";
 
@@ -45,6 +47,14 @@
         zoom: 16, // Zoom level
         container: "viewDiv" // Div element
       });
+
+      // Add a parks layer from the AGOL REST service
+      const usaparksLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Parks/FeatureServer"
+        });
+      
+      // Add the layer to the map
+      map.add(usaparksLayer);
 
       // Adding the contstuctor for the graphics layer
       const graphicsLayer = new GraphicsLayer();  
@@ -179,17 +189,6 @@
 
       // Add the polygon graphic to the graphics layer
       graphicsLayer.add(polygonGraphic);
-
-
-      const usaparksLayer = new FeatureLayer({
-        url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Parks/FeatureServer"
-        });
-      
-      // Add the layer to the map
-      map.add(usaparksLayer);
-
-
-
 
 
       //Add a locate button
