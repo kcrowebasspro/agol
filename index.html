@@ -182,8 +182,8 @@
 
       // Add a popup for the bridges layer
       const popupBridges = {
-        "title": "Bridges",
-        "content": "<b>Intersection:</b> {features_desc_006a}<br><b>Year built:</b> {year_built_027}<br>"
+        "title": "<b>Bridge Intersects:</b> {features_desc_006a}",
+        "content": "<b>Owner:</b> {owner_022}<br><b>Year built:</b> {year_built_027}<br><b>Daily traffic:</b> {adt_029}<br><b>Bridge condition:</b> {bridge_condition}"
       }
 
       // Add a parks layer from the AGOL REST service
@@ -191,7 +191,7 @@
         url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/National_Bridge_Inventory_v1/FeatureServer",
         
         //adding the popup here
-        outFields: ["features_desc_006a","year_built_027"],
+        outFields: ["features_desc_006a","owner_022","year_built_027","adt_029","bridge_condition"],
         popupTemplate: popupBridges
         });
 
