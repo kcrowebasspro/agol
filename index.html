@@ -186,7 +186,7 @@
         "content": "<table><tr><th>Owner</th><th>Year built</th><th>Daily traffic</th><th>Bridge condition</th></tr><tr><td>{owner_022}</td><td>{year_built_027}</td><td>{adt_029}</td><td>{bridge_condition}</td></tr></table><br><b>Deck condition:</b> {deck_cond_058}<br><br><b>Superstructure:</b> {superstructure_cond_059}<br><br><b>Substructure:</b> {substructure_cond_060}"
       }
 
-      // Add a parks layer from the AGOL REST service
+      // Add a bridges layer from the AGOL REST service
       const usbridgesLayer = new FeatureLayer({
         url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/National_Bridge_Inventory_v1/FeatureServer",
         
@@ -195,9 +195,17 @@
         popupTemplate: popupBridges
         });
 
-
       // Add the layer to the map
       map.add(usbridgesLayer);
+
+      // Add the airports layer from the AGOL REST service
+      const usairportsLayer = new FeatureLayer({
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_ktc/FeatureServer",
+        });
+
+
+      // Add the layer to the map
+      map.add(usairportsLayer);
 
 
       //Add a locate button
