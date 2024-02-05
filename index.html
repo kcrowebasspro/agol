@@ -198,11 +198,20 @@
       // Add the layer to the map
       map.add(usbridgesLayer);
 
+      // Add a popup for the airports layer
+      const popupAirports = {
+        "title": "<b>Facility name:</b> {Fac_Name}",
+        "content": "<br><b>Facility type:</b> {Fac_Type}<br><b>Owner name:</b> {Owner_Name}<br><b>City:</b> {City}<br><b>City:</b> {State_Name}"
+      }
+
       // Add the airports layer from the AGOL REST service
       const usairportsLayer = new FeatureLayer({
         url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_ktc/FeatureServer",
-        });
 
+        //adding the popup here
+        outFields: ["Fac_Name","Fac_Type","Owner_Name","City","State_Name"],
+        popupTemplate: popupAirports
+        });
 
       // Add the layer to the map
       map.add(usairportsLayer);
