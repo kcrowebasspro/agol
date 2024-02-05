@@ -139,6 +139,42 @@
       // Add the point graphic to the map
       graphicsLayer.add(polylineGraphic);
 
+      // Create a polygon showing the river mouth access
+      const polygon = {
+          type: "polygon",
+          rings: [
+              [-66.53477663463971, 18.48179322004595], 
+              [-66.53489133429031, 18.4808050962459], 
+              [-66.53290320701306, 18.48147593320804], 
+              [-66.53298923175102, 18.48207424504052]  
+          ]
+      };
+
+      // crate the fill options
+      const simpleFillSymbol = {
+          type: "simple-fill",
+          color: [164, 38, 38, 0.5],  // brick red, opacity 50%
+          outline: {
+              color: [255, 255, 255],
+              width: 1
+          }
+      };
+
+      // Create the graphic and set the geometry
+      const polygonGraphic = new Graphic({
+    geometry: polygon,
+    symbol: simpleFillSymbol,
+
+ });
+
+ // Add it to the graphics layer
+ graphicsLayer.add(polygonGraphic);
+
+  // CREATE THE POPUP HERE!!!!!!!!!
+
+
+
+
 
 
       //Add a locate button
