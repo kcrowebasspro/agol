@@ -222,7 +222,8 @@
         //adding the popup here
         outFields: ["Fac_Name","Fac_Type","Owner_Name","City","State_Name"],
         popupTemplate: popupAirports,
-        renderer: airportRenderer
+        renderer: airportRenderer, // getting the airport icon
+        definitionExpression: "Fac_Type = 'AIRPORT'" //adding sql to filter for airports
         });
 
       // Add the layer to the map
