@@ -65,14 +65,79 @@
           }  
         };
 
+      // Adding a popup -- first the template
+      const popupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+      }
+
+      // Adding the data elements for the template
+      const attributes = {
+        Name: "Machuca",
+        Description: "A beautiful right-hand reef break. To get there, you either swim across Rio Grande (watch out for caimans!) or park in Hacienda La Esperanza."
+      }
+
       // Combine the point and the marker 
       const pointGraphic = new Graphic({  
         geometry: point,  
-        symbol: simpleMarkerSymbol  
+        symbol: simpleMarkerSymbol,
+        
+        // Adding pop-up properties
+        attributes: attributes,
+        popupTemplate: popupTemplate
       });
 
       // Add the point graphic to the map
       graphicsLayer.add(pointGraphic);
+
+      // Add a polyline for a trail from the parking lot to surf break
+      // These are the paths
+      const paths = [
+        [  // first path
+          [-66.52255783909149, 18.4810516141503],
+          [-66.5234188990924, 18.48183948550025],
+          [-66.52474114198405, 18.483074054695415],
+          [-66.52515159252758, 18.483407250303124],
+          [-66.52550291033259, 18.48361838381196],
+          [-66.52585074978634, 18.483697558814015],
+          [-66.52602466954934, 18.483875702425184],       
+          [-66.52630294107806, 18.48390539300944],
+          [-66.5267412187358, 18.483846011835798],
+          [-66.52733950252252, 18.483852609744986],
+          [-66.52831345304921, 18.48358539421684],
+          [-66.52915161652668, 18.483113899248888]
+
+        ]
+      ];
+
+      // create the line
+      const polyline = {
+        type: "polyline",
+        paths: paths
+      };
+
+      // Style the line
+      const polylineSymbol = {
+        type: "simple-line",
+        color: [164, 38, 38],  // kind of a brick red
+        width: 4
+      };
+
+      const lineAtt = {
+        Name: "Path to Machuca", // name of the object
+        Description: "From Thursday through Sunday you can park at Hacienda La Esperanza and walk to Machuca. It's easier than swimming across the river." // description
+      };
+
+      // Combine the point and the marker 
+      const polylineGraphic = new Graphic({  
+        geometry: polyline,  
+        symbol: polylineSymbol,
+        attributes: lineAtt,
+        popupTemplate: popupTemplate
+      });
+
+      // Add the point graphic to the map
+      graphicsLayer.add(polylineGraphic);
 
 
 
