@@ -209,12 +209,11 @@
         "type": "simple",
         "symbol": {
           "type": "picture-marker",
-          "url": "https://github.com/kcrowebasspro/agol/blob/main/icons/outline_local_airport_black_24dp.png",
+          "url": "https://github.com/kcrowebasspro/agol/blob/main/icons/outline_local_airport_black_24dp.png?raw=true",
           "width": "18px",
           "height": "18px"
         }
       }
-
 
       // Add the airports layer from the AGOL REST service
       const usairportsLayer = new FeatureLayer({
@@ -228,7 +227,6 @@
 
       // Add the layer to the map
       map.add(usairportsLayer);
-
 
       //Add a locate button
       const locateWidget = new Locate({
