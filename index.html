@@ -35,7 +35,7 @@
 
       //create the map
       const map = new Map({
-        basemap: "arcgis-topographic"
+        basemap: "arcgis-imagery"
       });
 
       //Creating the overall map view and sending it to the viewDiv container
@@ -181,12 +181,12 @@
       graphicsLayer.add(polygonGraphic);
 
       // Add a parks layer from the AGOL REST service
-      const usaparksLayer = new FeatureLayer({
-        url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer"
+      const usbridgesLayer = new FeatureLayer({
+        url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/National_Bridge_Inventory_v1/FeatureServer"
         });
       
       // Add the layer to the map
-      map.add(usaparksLayer);
+      map.add(usbridgesLayer);
 
 
       //Add a locate button
