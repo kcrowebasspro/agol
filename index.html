@@ -186,12 +186,25 @@
         "content": "<table><tr><th>Owner</th><th>Year built</th><th>Daily traffic</th><th>Bridge condition</th></tr><tr><td>{owner_022}</td><td>{year_built_027}</td><td>{adt_029}</td><td>{bridge_condition}</td></tr></table><br><b>Deck condition:</b> {deck_cond_058}<br><br><b>Superstructure:</b> {superstructure_cond_059}<br><br><b>Substructure:</b> {substructure_cond_060}"
       }
 
+      
+      // add a custom icon to display bridges
+      const bridgesRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://raw.githubusercontent.com/kcrowebasspro/agol/main/icons/bridge.pngg",
+          "width": "10px",
+          "height": "10px"
+        }
+      }
+
       // Add a bridges layer from the AGOL REST service
       const usbridgesLayer = new FeatureLayer({
         url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/National_Bridge_Inventory_v1/FeatureServer",
         
         //adding the popup here
         outFields: ["features_desc_006a","owner_022","year_built_027","adt_029","bridge_condition","deck_cond_058","superstructure_cond_059","substructure_cond_060"],
+        renderer: bridgesRenderer,
         popupTemplate: popupBridges
         });
 
