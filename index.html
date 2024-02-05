@@ -35,7 +35,7 @@
 
       //create the map
       const map = new Map({
-        basemap: "arcgis-imagery"
+        basemap: "osm-light-gray"
       });
 
       //Creating the overall map view and sending it to the viewDiv container
@@ -217,7 +217,7 @@
           expression: "$feature.Fac_Name"
         }
       };
-      
+
       // add a custom icon to display airports
       const airportRenderer = {
         "type": "simple",
