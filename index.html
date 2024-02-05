@@ -150,7 +150,7 @@
           ]
       };
 
-      // crate the fill options
+      // create the fill options for the polygon
       const simpleFillSymbol = {
           type: "simple-fill",
           color: [164, 38, 38, 0.5],  // brick red, opacity 50%
@@ -160,17 +160,24 @@
           }
       };
 
-      // Create the graphic and set the geometry
+       // Create some popup info for the polygon
+       const polyAtt = {
+        Name: "Rio Grande river mouth",
+        Description: "Cross this river mouth to get to Machuca. Beware of the caimans!"
+       };
+
+      // Create the graphic and set the geometry to the polygon
       const polygonGraphic = new Graphic({
-    geometry: polygon,
-    symbol: simpleFillSymbol,
+        geometry: polygon,
+        symbol: simpleFillSymbol,
+        attributes: polyAtt,
+        popupTemplate: popupTemplate
+      });
 
- });
+      // Add the polygon graphic to the graphics layer
+      graphicsLayer.add(polygonGraphic);
 
- // Add it to the graphics layer
- graphicsLayer.add(polygonGraphic);
 
-  // CREATE THE POPUP HERE!!!!!!!!!
 
 
 
